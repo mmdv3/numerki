@@ -1,0 +1,35 @@
+Tutaj możemy sobie zapisać rzeczy które chcemy zawrzeć w sprawozdaniu, jakieś wnioski i rzeczy które jeszcze trzeba będzie ogarnąć
+
+Rzeczy do sprawozdania:
+- jakiś fajny wstęp o tym jak to całkowanie jest ważne czy coś
+- wykresy badanych funkcji i na ich podstawie stwierdzenie, że I_s powinno być łatwiejsze do badania
+- wyjaśnienie metody trapezów
+- podpunkt A
+	-> opisanie wyników (tabelki, wykresy czy coś)
+	-> jakieś wnioski do tego, że I_C jest słabsze 
+- podpunkt B
+	-> wyprowadzenie wzorów użytych funkcji
+	-> fajnie by było też ogarnąć skąd się bierze ten wzorek z treści zadania
+	-> opis wyników
+	-> wnioski
+- podpunkty C i D
+	-> opis wyników, wnioski
+	-> zamiana zmiennej całkowania
+- wyjaśnienie tej metody Gaussa-Legendre'a
+
+Ogólne uwagi:
+Zbieżność tych metod (A i B) jest wogóle jakaś słaba - w sensie jak popatrzysz na te wykresy log10 to one właściwie się utrzymują na tym samym poziomie (chyba, że ja coś źle czytam). Czy to ogólnie tak działa dla metody trapezów?
+
+
+Do zrobienia:
+(MF) no ja sobie w zasadzie jeszcze nie ogarnełam tej metody Gaussa-Legendre'a, więc wogóle nie wiem co co chodzi
+- trzeba ogarnąć skąd bieże się wzór z B
+- sprawozdanie
+- zrobić analizę błędów do podpunktów C i D (tabelki, wykresy błędów)
+
++ na pewno w środę Woźny nam jeszcze powie dużo rzeczy które trzeba zrobić
+
+Pytania:
+Wartości całek w treści zadania i na wolframie są inne (różnica 5-te miejsce po przecinku); czemu? Do których porównywać wyniki (na razie jest do wolframa)?
+Co to znaczy 100(100)100?
+
