@@ -2,7 +2,7 @@ Tutaj możemy sobie zapisać rzeczy które chcemy zawrzeć w sprawozdaniu, jakie
 
 Rzeczy do sprawozdania:
 - jakiś fajny wstęp o tym jak to całkowanie jest ważne czy coś
-- wykresy badanych funkcji i na ich podstawie stwierdzenie, że I_s powinno być łatwiejsze do badania
+- wykresy badanych funkcji i na ich podstawie stwierdzenie, że I_s powinno być łatwiejsze do badania, granice 
 - wyjaśnienie metody trapezów
 - podpunkt A
 	-> opisanie wyników (tabelki, wykresy czy coś)
@@ -26,10 +26,12 @@ Do zrobienia:
 - trzeba ogarnąć skąd bieże się wzór z B
 - sprawozdanie
 - zrobić analizę błędów do podpunktów C i D (tabelki, wykresy błędów)
+- sumowanie całki cos(x^2) od prawej do lewej
+- /\ zwykły cosinus też
+- przedział [100,1000]
 
 + na pewno w środę Woźny nam jeszcze powie dużo rzeczy które trzeba zrobić
 
 Pytania:
 Wartości całek w treści zadania i na wolframie są inne (różnica 5-te miejsce po przecinku); czemu? Do których porównywać wyniki (na razie jest do wolframa)?
-Co to znaczy 100(100)100?
-
+Co to znaczy 100(100)100? julia "100:100:1000" 
