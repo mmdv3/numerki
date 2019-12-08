@@ -1,0 +1,60 @@
+\documentclass{article}
+
+\usepackage{polski}
+\usepackage{amsmath,amsfonts,stmaryrd,amssymb} 
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry} 
+\usepackage{titlesec}
+
+\geometry{
+	paper=a4paper,
+	top=2.5cm, 
+	bottom=3cm,
+	left=2.5cm,
+	right=2.5cm,
+	headheight=14pt,
+	footskip=1.5cm,
+	headsep=1.2cm,
+}
+
+\titlelabel{\thetitle.\quad}
+
+\pagenumbering{gobble}
+
+\title{
+	\textbf{Pracownia z analizy numerycznej}\\[8pt]
+	\large{Sprawozdanie do zadania \textbf{P2.19}\\
+	Prowadzący: dr hab. prof. Paweł Woźny}}
+
+\author{\large{Martyna Firgolska, Michał Dymowski}}
+
+\date{\large{Wrocław, \today}}
+
+\newtheorem{theorem}{zera funkcji ortogonalnych}
+
+
+
+\begin{document}
+
+\maketitle 
+
+\section*{Kwadratury Gaussa-Legendre'a}
+
+\subsection*{Kwadratura} 
+Metoda całkowania numerycznego polegająca na obliczeniu wartości wyrażenia
+\[ \sum_{i=0}^n A_if(x_i) \approx \int_a^b f(x) d x \] 
+gdzie $x_0,...,x_n\in [a,b]$.
+
+\subsection*{Kwadratura Gaussa-Legendre'a}
+Kwadratura w której węzły $x_0,x_1,...,x_n$ są pierwiastkami $n+1$-szego
+wielomianu ortogonalnego na przedziale $[a,b]$, a współczynniki są równe
+\[A_i=\int_a^b \prod_{j=0,j\neq i}^n \frac{x-x_j}{x_i-x_j} dx\]. O istnieniu
+wystarczająco wielu pierwiastków wielomianu ortogonalnego, oraz zasadności 
+takiego doboru węzłów mówią następujące twierdzenia: 
+
+\begin{theorem}
+	elo
+\end{theorem}
+
+\end{document}
