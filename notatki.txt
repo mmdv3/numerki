@@ -28,9 +28,15 @@ Do zrobienia:
 - zrobić analizę błędów do podpunktów C i D (tabelki, wykresy błędów)
 - sumowanie całki cos(x^2) od prawej do lewej
 - /\ zwykły cosinus też
-- przedział [100,1000]
+- złożone kwadratury G-L
+- wyskokie stopnie G-L
+- twierdzenie o szeregu naprzemiennym - Tailor - dokładność G-L
+- funkcja Fresnela
+
+- high level: szacowanie błędu złożonego G-L - porównaj dokładność złożonego wzoru trapezów
 
 + na pewno w środę Woźny nam jeszcze powie dużo rzeczy które trzeba zrobić
++ przedział [100,1000]
 
 Pytania:
 Wartości całek w treści zadania i na wolframie są inne (różnica 5-te miejsce po przecinku); czemu? Do których porównywać wyniki (na razie jest do wolframa)?
