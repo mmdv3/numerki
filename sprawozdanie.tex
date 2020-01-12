@@ -37,7 +37,7 @@
 
 \date{\large{Wrocław, \today}}
 
-\newtheorem{theorem}{zera funkcji ortogonalnych}
+\newtheorem{theorem}{Twierdzenie}
 
 
 
@@ -46,10 +46,16 @@
 \maketitle 
 
 \section*{Wstęp}
+%Wstęp ogólnie jest ważny w chuj, prawie tak jak liczenie całek.
+%Ta praca jest właśnie o liczeniu całek, w związku z czym jest ważna.
+%Patrzymy tu na różne heurystyki liczące całki i do samego końca dziwimy się,
+%dlaczego wyniki uzyskane przy ich pomocy nie są dokładne. Szczerze mówiąc 
+%ten problem dalej nas przerasta. Lorem ipsum
 \dots
 \section*{Metoda trapezów}
 \dots
 \section*{Kwadratury Gaussa-Legendre'a}
+	Wagą nazywam funkcję ciągłą, która nie jest tożsamościowo równa 0.
 \subsection*{Kwadratura} 
 Metoda całkowania numerycznego polegająca na obliczeniu wartości wyrażenia
 \[ \sum_{i=0}^n A_if(x_i) \approx \int_a^b f(x) d x \] 
@@ -57,15 +63,54 @@ gdzie $x_0,...,x_n\in [a,b]$.
 
 \subsection*{Kwadratura Gaussa-Legendre'a}
 Kwadratura w której węzły $x_0,x_1,...,x_n$ są pierwiastkami $n+1$-szego
-wielomianu ortogonalnego na przedziale $[a,b]$, a współczynniki są równe
+wielomianu ortogonalnego $w_{n+1}$ na przedziale $[a,b]$ (z wagą $p\equiv 1$), a współczynniki są równe
 \[A_i=\int_a^b \prod_{j=0,j\neq i}^n \frac{x-x_j}{x_i-x_j} dx\]. O istnieniu
 wystarczająco wielu pierwiastków wielomianu ortogonalnego, oraz zasadności 
 takiego doboru węzłów mówią następujące twierdzenia: 
 \begin{theorem}
-	elo
+	Jeśli niezerowa funkcja $f\in C[a,b]$ jest ortogonalna w tym przedziale z wagą $w$ względem wszystkich wielomianów klasy $\prod_{n}$, to w $(a,b)$ zmienia znak co najmniej $n+1$ razy.
 \end{theorem}
+\textbf{Dowód} $1\equiv w \in \prod_{n}$, więc $\int_a^b f(x)w(x)dx = 0$, co oznacza, że $f$ musi zmieniać znak co najmniej raz. Przypuśćmy, że $f$ zmienia znak tylko $r$ razy, gdzie $r\le n $. Zatem istnieją punkty $a=a_0<a_1<...<a_{r+1}=b$ takie, że w każdym z przedziałów $(a_i,a_{i+1})$ funkcja $f$ ma stały znak. Wielomian $\prod_{r}^{i=1}(x-a_i) = b(x) \in \prod_{n}$ ma tę samą własność, więc ponieważ $f$ jest niezerowa, a $f(x)b(x)$ jest ciągła to powinno być $\int_{a}^{b} f(x)b(x)w(x)dx\neq 0$, co jest sprzeczne z założeniem, że $\int_{a}^{b}f(x)b(x)w(x)dx = 0$. \newline
+
+W szczególności wielomian $w_{n+1}$ spełnia założenia powyższego twierdzenia, więc musi mieć dokładnie $n+1$ pierwiastków jednokrotnych.
+
+\begin{theorem}
+	Jeśli węzły $x_0,x_1,...,x_n$ są zerami $n+1$-szego wielomianu ortogonalnego $w_{n+1}$ na przedziale $[a,b]$ z wagą $w$, to kwadratura o współczynnikiach
+	\[A_i=\int_a^b w(x)\prod_{j=0,j\neq i}^n \frac{x-x_j}{x_i-x_j} dx\] jest dokładana dla każdego wielomianu $f\in\prod_{2n+1}$.
+\end{theorem}
+
+\textbf{Dowód} Niech $r$ będzie resztą z dzielenia wielomianu $f$ przez $w_{n+1}$: $(q,r\in \prod_{n})$\[f = qw_{n+1} + r .\] Stąd $r(x_i) = f(x_i)$. Ponieważ kwadratura Gaussa-Legendre'a jest z założenia dokładna dla wielomianów postaci $\sum_{i=0}^n B_i\prod_{j=0,j\neq i}^n \frac{x-x_j}{x_i-x_j}$, to jest dokładna dla wszystkich wielomianów z $\prod_n$. Dla takich wielomianów kwadratura oblicza dokładną wartoś całki wielomianu interpolacyjnego danego wielomianu w węzłach $x_0,x_1,...,x_n$. Ponieważ liczba użytych węzłów jest większa niż stopień wyjściowego wielomianu to otrzymany wielomian interpolacyjny jest mu równy. Ponieważ $w_{n+1}$ jest ortogonalny względem wszystkich wielomianów stopnia co najwyżej $n$,to \[\int_a^b f(x)w(x)dx = \int_a^b r(x)w(x)dx = \sum_{i=0}^n A_ir(x_i) = \sum_{i=0}^n A_if(x_i).\] 
+
+Nie da się skonstruować kwadratury, która przy użyciu $n+1$ węzłów będzie dokładna dla wielomianów stopnia wyższego niż $2n+1$. Niech będą dane pewne $x_0,x_1,...,x_n,A_0,A_1,...,A_n$, kwadratura $Q(f) = \sum_{i=0}^n A_if(x_i)$ nie jest dokładna dla wielomianu $prod_{i=0}^n (x-x_i)^2$.
+
+\subsection{Otrzymane wyniki}
+	Kwadratury Gaussa-Legendre'a wykorzystaliśmy do obliczenia wartości całek z funkcji $Snew$ i $Cnew$ równych odpowiednio całkom $I_S,I_C$.
+
+
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{WykresD1absolute.png}
+    \label{wykresDabs}
+\end{figure}
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{WykresD1relative.png}
+    \label{wykresDrel}
+\end{figure}
+
+\newpage
+W punktach, w których wykres błędu bezwzględnego znika obliczona wartość jest równa reprezentacji wartości całki (odpowiednio $I_C$ lub $I_S$) w arytmetyce Float64. Ciąg kwadratur Gaussa-Legendre'a z funkcji ciągłej na przedziale jest zbieżny do wartości całki z tej funkcji (tw. Stieltjes'a), więc tak długo można się było spodziewać, że używanie kwadratur wyższych stopni będzie poprawiać dokładność otrzymanego wyniku, ale nawet wyniki dla bardzo niskich stopni kwadratur dają rezultaty znacznie dokładniejsze niż wcześniej użyte metody, wymagające wykonania wielokrotnie większej ilości obliczeń.
+
+\subsection*{Złożne kwadratury Gaussa-Legendre'a}
+	Dzielimy przedział $[-1,1]$ $n$ punktami równnodległymi, a następnie całkę z danej funkcji obliczamy osobno na każdym z powstałych $n-1$ przedziałów, za każdym razem stosując kwadraturę Gaussa-Legendre'a. 
+
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{WykresD2relative.png}
+    \label{WykresD2rel}
+\end{figure}
+Powyżej widać wykres błędu względnego dla kwadratur rozbijających przedział $[-1,1]$ na trzy podprzedziały. Rozbijanie wyjściowego przedziału na większą ilość podprzedziałów nie wpływa na wyniki w sposób znaczący. Poprawia się jedynie dokładność otrzymanego wyniku dla kwadratur niższych stopni. W przypadku całki $I_C$ otrzymujemy 16 cyfr dokładnych i wynik ten nie poprawia się, nawet gdy używamy ponad 100 podprzedziałów zamiast wyjściowego $[-1,1]$. Dla 10 i więcej użytych podprzedziałów wyniki otrzymany przy obliczaniu całki $I_C$ jest dokładną wartością $I_C$ w arytmetyce Float64.  
+
 \section*{Badane funkcje}
 W tym sprawozdaniu zbadamy skuteczność różnych metod numerycznych w obliczaniu przybliżonych wartości całek dla funkcji $C = \frac{cos(x)}{\sqrt{x}}$ i $S = \frac{sin(x)}{\sqrt{x}}$ na przedziale $[0, 1]$. Całkowane funckje nie są zdefiniowane w $0$, na potrzeby obliczeń przyjmiemy, że wartości tych funkcji w $0$ są równe $0$. 
+
 \begin{equation}
 I_C = \int_0^1 \frac{cos(x)}{\sqrt{x}} dx \approx 1.8090484758005441629...
 \end{equation}
