@@ -51,6 +51,51 @@
 %Patrzymy tu na różne heurystyki liczące całki i do samego końca dziwimy się,
 %dlaczego wyniki uzyskane przy ich pomocy nie są dokładne. Szczerze mówiąc 
 %ten problem dalej nas przerasta. Lorem ipsum
+Liczenie wartości całki oznaczonej jest istotnym zagadnieniem matematyczntm wykorzystywanym w fizyce i innych naukach ścisłych. Dla niektórych funkcji $f$ jesteśmy w stanie łatwo znaleźć funkcję pierwotną $F$ czyli taką, że $F' = f$. Jeśli umiemy w łatwy sposób obliczyć wartość $F$ w danym punkcie to możemy obliczyć wartość całki oznaczonej: $\int_a^b f(x) dx = F(b) - F(a) $. Niestety dla niektórych funkcji $f$ znalezienie $F$ i jej wartości dla danych punktów nie jest łatwe. Z tego powodu chcielibyśmy w jakiś sposób przybliżać wartości całek oznaczonych obliczając wartości znanej nam funkcji $f$. Metody numeryczne, które obliczają te przybliżone wartości nazywamy kwadraturami. Poniższe sprawozdanie dotyczy porównania dokładności różnych kwadratur dla niżej opisanych funkcji.
+\section*{Badane funkcje}
+W tym sprawozdaniu zbadamy skuteczność różnych metod numerycznych w obliczaniu przybliżonych wartości całek dla funkcji $C = \frac{cos(x)}{\sqrt{x}}$ i $S = \frac{sin(x)}{\sqrt{x}}$ na przedziale $[0, 1]$. Całkowane funckje nie są zdefiniowane w $0$, na potrzeby obliczeń przyjmiemy, że wartości tych funkcji w $0$ są równe $0$. 
+
+\begin{equation}
+I_C = \int_0^1 \frac{cos(x)}{\sqrt{x}} dx \approx 1.8090484758005441629...
+\end{equation}
+\begin{equation}
+I_S = \int_0^1 \frac{sin(x)}{\sqrt{x}} dx \approx 0.6205366034467622036...
+\end{equation}
+%\begin{figure}
+
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{WykresC.png}
+    \label{wykresC}
+\end{figure}
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{WykresS.png}
+    \label{WykresS}
+\end{figure}
+%\end{figure}
+Przyjrzyjmy się wykresom badanych funckji na podanym przedziale. Zauważamy, że $C$ w zerze rozbiega do nieskończoności, a $S$ w zerze zbiega do $0$. Reczywiście obliczenie granic daje wyniki zgodne z wykresami funkcji:
+\begin{equation}
+\lim_{x\to 0}  \frac{cos(x)}{\sqrt{x}} = \lim_{x\to 0} \frac{cos(0)}{\sqrt{x}} = +\infty
+\end{equation}
+\begin{equation}
+\lim_{x\to 0}  \frac{sin(x)}{\sqrt{x}} = \lim_{x\to 0}  \frac{sin(x)}{x} \sqrt{x} = 0
+\end{equation}
+Na podstawie tej informacji możemy przypuszczać, że obliczenie całki $I_S$ będzie łatwiejsze niż obliczenie $I_C$, ponieważ $S$ jest ograniczona, a jej wartość w $0$ zgadza się z jej granicą w tym punkcie. $C$ jest nieograniczona i w zerze przyjmuje $0$, ale jej granica w tym punkcie wynosi $+\infty$ zatem obliczenie całki w okolicy $0$ może być niedokładne.\\
+Możemy zmienić postać całek $I_C$ i $I_S$ za pomocą podstawienia $x=t^2$ Wtedy:
+\begin{equation}
+I_C = \int_0^1 \frac{cos(t^2)}{\sqrt{t^2}} 2tdt = \int_0^1 2cos(t^2)
+\end{equation}
+\begin{equation}
+I_S = \int_0^1 \frac{sin(t^2)}{\sqrt{t^2}} 2tdt = \int_0^1 2sin(t^2)
+\end{equation}
+Otrzymujemy w ten sposób nowe funkcje pod całką $Snew(x) = 2sin(x^2)$ i $Cnew(x) = 2cos(x^2)$. Nowe funkcje mają określone wartości dla wszystkich punktach z przedziału $[0,1]$ i obie funkcjie są ograniczone, więc nie mamy takiego problemu jak przy funkcji $C$.
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{WykresCnew.png}
+    \label{wykresCnew}
+\end{figure}
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{WykresSnew.png}
+    \label{WykresSnew}
+\end{figure}
 \dots
 \section*{Metoda trapezów}
 \dots
@@ -108,52 +153,21 @@ W punktach, w których wykres błędu bezwzględnego znika obliczona wartość j
 \end{figure}
 Powyżej widać wykres błędu względnego dla kwadratur rozbijających przedział $[-1,1]$ na trzy podprzedziały. Rozbijanie wyjściowego przedziału na większą ilość podprzedziałów nie wpływa na wyniki w sposób znaczący. Poprawia się jedynie dokładność otrzymanego wyniku dla kwadratur niższych stopni. W przypadku całki $I_C$ otrzymujemy 16 cyfr dokładnych i wynik ten nie poprawia się, nawet gdy używamy ponad 100 podprzedziałów zamiast wyjściowego $[-1,1]$. Dla 10 i więcej użytych podprzedziałów wyniki otrzymany przy obliczaniu całki $I_C$ jest dokładną wartością $I_C$ w arytmetyce Float64.  
 
-\section*{Badane funkcje}
-W tym sprawozdaniu zbadamy skuteczność różnych metod numerycznych w obliczaniu przybliżonych wartości całek dla funkcji $C = \frac{cos(x)}{\sqrt{x}}$ i $S = \frac{sin(x)}{\sqrt{x}}$ na przedziale $[0, 1]$. Całkowane funckje nie są zdefiniowane w $0$, na potrzeby obliczeń przyjmiemy, że wartości tych funkcji w $0$ są równe $0$. 
 
-\begin{equation}
-I_C = \int_0^1 \frac{cos(x)}{\sqrt{x}} dx \approx 1.8090484758005441629...
-\end{equation}
-\begin{equation}
-I_S = \int_0^1 \frac{sin(x)}{\sqrt{x}} dx \approx 0.6205366034467622036...
-\end{equation}
-%\begin{figure}
-
-\begin{figure}[ht]
-    \includegraphics[scale=0.5]{WykresC.png}
-    \label{wykresC}
-\end{figure}
-\begin{figure}[ht]
-    \includegraphics[scale=0.5]{WykresS.png}
-    \label{WykresS}
-\end{figure}
-%\end{figure}
-Przyjrzyjmy się wykresom badanych funckji na podanym przedziale. Zauważamy, że $C$ w zerze rozbiega do nieskończoności, a $S$ w zerze zbiega do $0$. Reczywiście obliczenie granic daje wyniki zgodne z wykresami funkcji:
-\begin{equation}
-\lim_{x\to 0}  \frac{cos(x)}{\sqrt{x}} = \lim_{x\to 0} \frac{cos(0)}{\sqrt{x}} = +\infty
-\end{equation}
-\begin{equation}
-\lim_{x\to 0}  \frac{sin(x)}{\sqrt{x}} = \lim_{x\to 0}  \frac{sin(x)}{x} \sqrt{x} = 0
-\end{equation}
-Na podstawie tej informacji możemy przypuszczać, że obliczenie całki $I_S$ będzie łatwiejsze niż obliczenie $I_C$, ponieważ $S$ jest ograniczona, a jej wartość w $0$ zgadza się z jej granicą w tym punkcie. $C$ jest nieograniczona i w zerze przyjmuje $0$, ale jej granica w tym punkcie wynosi $+\infty$ zatem obliczenie całki w okolicy $0$ może być niedokładne.\\
-Możemy zmienić postać całek $I_C$ i $I_S$ za pomocą podstawienia $x=t^2$ Wtedy:
-\begin{equation}
-I_C = \int_0^1 \frac{cos(t^2)}{\sqrt{t^2}} 2tdt = \int_0^1 2cos(t^2)
-\end{equation}
-\begin{equation}
-I_S = \int_0^1 \frac{sin(t^2)}{\sqrt{t^2}} 2tdt = \int_0^1 2sin(t^2)
-\end{equation}
-Otrzymujemy w ten sposób nowe funkcje pod całką $Snew(x) = 2sin(x^2)$ i $Cnew(x) = 2cos(x^2)$. Nowe funkcje mają określone wartości dla wszystkich punktach z przedziału $[0,1]$ i obie funkcjie są ograniczone, więc nie mamy takiego problemu jak przy funkcji $C$.
-\begin{figure}[ht]
-    \includegraphics[scale=0.5]{WykresCnew.png}
-    \label{wykresCnew}
-\end{figure}
-\begin{figure}[ht]
-    \includegraphics[scale=0.5]{WykresSnew.png}
-    \label{WykresSnew}
-\end{figure}
-\section*{Omówienie wyników}
+\section*{Podsumowanie wyników}
 \dots
+\begin{thebibliography}{9}
+
+  
+\bibitem{kincaid}
+  David Kincaid, Ward Cheney
+  \emph{Analiza numeryczna}.
+
+\bibitem{wiki}
+  Wikipedia
+  \emph{https://www.wikipedia.org/}.
+
+\end{thebibliography}
 
 
 \end{document}
