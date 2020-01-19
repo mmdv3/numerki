@@ -205,9 +205,11 @@ W szczególności wielomian $w_{n+1}$ spełnia założenia powyższego twierdzen
 
 Nie da się skonstruować kwadratury, która przy użyciu $n+1$ węzłów będzie dokładna dla wielomianów stopnia wyższego niż $2n+1$. Niech będą dane pewne $x_0,x_1,...,x_n,A_0,A_1,...,A_n$, kwadratura $Q(f) = \sum_{i=0}^n A_if(x_i)$ nie jest dokładna dla wielomianu $\prod_{i=0}^n (x-x_i)^2$. \newline
 
-Błąd kwadratury Gaussa-Legendre'a stopnia $n$ dla funkcji $f$ jest równy \[
-	\frac{2^{2n+1}(n!)^4}{(2n+1)[(2n)!]^3}f^{(2n)}(\xi) \]
-dla pewnego punktu $\xi$ należącego do przedziału całkowania.
+\begin{theorem}
+	Błąd kwadratury Gaussa-Legendre'a stopnia $n$ dla funkcji $f$ na przedziale [a,b] jest równy \[
+		\frac{(b-a)^{2n+1}(n!)^4}{(2n+1)[(2n)!]^3}f^{(2n)}(\xi) \]
+dla pewnego punktu $\xi$ należącego do przedziału całkowania \cite{khaner}.
+\end{theorem}
 
 \subsection{Otrzymane wyniki}
 	Kwadratury Gaussa-Legendre'a wykorzystaliśmy do obliczenia wartości całek z funkcji $Snew$ i $Cnew$ równych odpowiednio całkom $I_S,I_C$.
@@ -254,6 +256,10 @@ Powyżej widać wykres błędu względnego dla kwadratur rozbijających przedzia
 \bibitem{wolfram}
 	Wolfram Mathworld
 		\emph{http://mathworld.wolfram.com}
+
+\bibitem{khaner}
+	David Khaner, Cleve Moler, Stephen Nash
+	\emph{Numerical Methods and Software - Prentice-Hall, 1989}
 \end{thebibliography}
 
 
