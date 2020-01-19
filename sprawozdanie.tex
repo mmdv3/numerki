@@ -171,7 +171,7 @@ Poniższy wykres przedstawia wyniki dwóch sposobów wyboru długości $h$ przed
     \label{wykresB}
 \end{figure}
 
-Krzywe $IS$ i $IS2$ pokrywają się. Wyniki obliczenia całki $I_S$ nie różnią się ilością cyfr dokładnych od wyników uzyskanych przy pomocy złożonego wzoru trapezów, natomiast w przypadku całki $I_C$ zastosowanie metody 2. daje 2-3 cyfry dokładne (złożony wzór trapezów dawał tylko jedną). Tak duża róźnica w dokładności otrzymanego wyniku pomiędzy podejściem 1. i 2. dla całki $I_C$ oraz $n=1000$ węzłów jest niespodziewana, ponieważ chociaż w metodzie 2. przedział na którym nie używamy metody trapezów jest dłuższy niż w metodzie 1. to w tym przypadku różnica długości tych przedziałów jest rzędu 2e-16, a więc jest znacznie mniejsza niż różnica uzyskanych wyników, a przecież całkujemy funkcje o wartościach w przedziale $[-1,1]$.
+Krzywe $IS$ i $IS2$ pokrywają się. Wyniki obliczenia całki $I_S$ nie różnią się ilością cyfr dokładnych od wyników uzyskanych przy pomocy złożonego wzoru trapezów, natomiast w przypadku całki $I_C$ zastosowanie metody 2. daje 2-3 cyfry dokładne (złożony wzór trapezów dawał tylko jedną). Tak duża różnica w dokładności otrzymanego wyniku pomiędzy podejściem 1. i 2. dla całki $I_C$ oraz $n=1000$ węzłów jest niespodziewana, ponieważ chociaż w metodzie 2. przedział na którym nie używamy metody trapezów jest dłuższy niż w metodzie 1. to w tym przypadku różnica długości tych przedziałów jest rzędu 2e-16, a więc jest znacznie mniejsza niż różnica uzyskanych wyników, a przecież całkujemy funkcje o wartościach w przedziale $[-1,1]$.
 
 \section*{Metoda trapezów po podstawieniu $x=t^2$ (C)}
 Po wykonaniu podstawień (5) i (6) otrzymujemy nowe funkcje podcałkowe $2\sin{x^2}$ i $2\cos{x^2}$ pozbawione osobliwości w punkcie 0. Można spodziewać się, że zastosowanie złożonego wzoru trapezów dla funkcji ciągłych na całym przedziale całkowania da lepsze wyniki, ponieważ skoro nasz przedział jest ograniczony, to funkcje które całkujemy są na nim jednostajnie ciągłe.
@@ -221,7 +221,7 @@ Nie da się skonstruować kwadratury, która przy użyciu $n+1$ węzłów będzi
 dla pewnego punktu $\xi$ należącego do przedziału całkowania \cite{khaner}.
 \end{theorem}
 
-\subsection{Otrzymane wyniki}
+\subsection*{Otrzymane wyniki}
 	Kwadratury Gaussa-Legendre'a wykorzystaliśmy do obliczenia wartości całek z funkcji $Snew$ i $Cnew$ równych odpowiednio całkom $I_S,I_C$.
 
 
@@ -258,7 +258,7 @@ Po przeprowadzeniu eksperymentów zauważamy, że gdy kożystaliśmy z metody tr
     \label{wykresABC-D}
     \caption{porównanie najlepszych wyników dla metody A-C z wynikami kwadratur Gaussa-Legendre'a dla stopni 5 i 8}
 \end{figure}\\
-Kwadratura Gaussa-Legendre'a daje dużo lepsze wyniki, przy wykonaniu mniejszej ilości obliczeń - możemy osiągnąć nawet 15-16 dokładne liczby po przecinku. Złożonych kwadratury Gaussa-Legendre'a dla niskich stopni dają lepsze wyniki niż zwyzczajna kwadratura Gaussa-Legendre'a, ale dla wysokich stopni różnica jest niewielka.
+Kwadratura Gaussa-Legendre'a daje dużo lepsze wyniki, przy wykonaniu mniejszej ilości obliczeń - możemy osiągnąć nawet 15-16 dokładne liczby po przecinku. Złożonych kwadratury Gaussa-Legendre'a dla niskich stopni dają lepsze wyniki niż zwyczajna kwadratura Gaussa-Legendre'a, ale dla wysokich stopni różnica jest niewielka.
 \begin{thebibliography}{9}
 
   
