@@ -92,7 +92,16 @@ Otrzymujemy w ten sposób nowe funkcje pod całką $Snew(x) = 2sin(x^2)$ i $Cnew
     \includegraphics[scale=0.5]{WykresSnew.png}
     \label{WykresSnew}
 \end{figure}
-\section*{Metoda trapezów}
+\subsection*{Całki Fresnela}
+Badane całki to całki Fresnela - używane w fizyce do badania zjawiska dyfrakcji 
+Fresnela. Całki Fresnela można zapisać jako szeregi:
+\begin{equation}
+\int_0^x sin(t^2) dt = \sum_{n=0}^{\infty} (-1)^n \frac{x^{4n+3}}{(2n+1)!(4n+3)}
+\end{equation}
+\begin{equation}
+\int_0^x cos(t^2) dt = \sum_{n=0}^{\infty} (-1)^n \frac{x^{4n+1}}{(2n)!(4n+1)}
+\end{equation}
+\section*{Metoda trapezów (A)}
 Metoda trapezów jest kwadraturą wyrażoną wzorem: 
 \begin{equation}
 \int_a^b f(x) dx \approx \frac{1}{2}(b-a) (f(a)+f(b))
@@ -139,13 +148,14 @@ liczba przedziałów & $I_C$ & $I_S$ \\ \hline \hline
 1000& 1.7633856545771385 & 0.6213723429157811 \\ \hline
 \end{tabular}\\
 \\
-Wyniki otrzymane za pomocą metody trapezów są coraz lepsze wraz ze wzrostem $n$. Zauważamy jednak, że polepszenie wyniku kosztem zwiększenia $n$ (co wiąże się ze zwiększeniem ilości obliczeń - czyli dłuższym obliczaniem wyniku i większymi błędami wynikającymi z zaokrągleń liczb) jest niewielkie. Jak widzimy na rysunku \ref{wykresA} logarytmy błędu maleją dość wolno. Logarytmy dziesiętne błędu oznaczają ile miejsc po przecinku wyniku jest dokładnych. Widzimy więc że w przypadku $I_C$ mamy ok. 1 cyfrę dokładną, a w przypadku $I_S$ mamy około 2 doładne cyfry po przecinku. Zauważamy również, że metoda trapezów gorzej radzi sobie z funkcją $C$ niż z $S$.
+Wyniki otrzymane za pomocą metody trapezów są coraz lepsze wraz ze wzrostem $n$. Zauważamy jednak, że polepszenie wyniku kosztem zwiększenia $n$ (co wiąże się ze zwiększeniem ilości obliczeń - czyli dłuższym obliczaniem wyniku i większymi błędami wynikającymi z zaokrągleń liczb) jest niewielkie. Jak widzimy na rysunku 1 %\ref{wykresA} 
+logarytmy błędu maleją dość wolno. Logarytmy dziesiętne błędu oznaczają ile miejsc po przecinku wyniku jest dokładnych. Widzimy więc że w przypadku $I_C$ mamy ok. 1 cyfrę dokładną, a w przypadku $I_S$ mamy około 2 doładne cyfry po przecinku. Zauważamy również, że metoda trapezów gorzej radzi sobie z funkcją $C$ niż z $S$.
 \begin{figure}[ht]
     \includegraphics[scale=0.5]{WykresAlogabsolute.png}
     \label{wykresA}
     \caption{logarytm z błędu bezwzględnego obliczenia całek $I_C$ i $I_S$ wzorem złożonym trapezów dla różnych n}
 \end{figure}
-\section*{Modyfikacja złożonego wzoru trapezów}
+\section*{Modyfikacja złożonego wzoru trapezów (B)}
 Sprawdzamy czy na dokładność otrzymanego wyniku wpłynie zmiana sposobu całkowania danych funkcji w pewnym otoczeniu punktu 0, a poza tym otoczeniem stosujemy złożony wzór trapezów. Do całkowania na przedziale $[0,h]$ dla małych wartośći $h$ stosujemy odpowiednio przekształconą tożsamość \[
 	\int_0^1 x^{-1/2}f(x) dx \approx \frac{4}{3}f(0)+\frac{2}{3}f(1), \]
 otrzymując \[
@@ -163,7 +173,7 @@ Poniższy wykres przedstawia wyniki dwóch sposobów wyboru długości $h$ przed
 
 Krzywe $IS$ i $IS2$ pokrywają się. Wyniki obliczenia całki $I_S$ nie różnią się ilością cyfr dokładnych od wyników uzyskanych przy pomocy złożonego wzoru trapezów, natomiast w przypadku całki $I_C$ zastosowanie metody 2. daje 2-3 cyfry dokładne (złożony wzór trapezów dawał tylko jedną). Tak duża róźnica w dokładności otrzymanego wyniku pomiędzy podejściem 1. i 2. dla całki $I_C$ oraz $n=1000$ węzłów jest niespodziewana, ponieważ chociaż w metodzie 2. przedział na którym nie używamy metody trapezów jest dłuższy niż w metodzie 1. to w tym przypadku różnica długości tych przedziałów jest rzędu 2e-16, a więc jest znacznie mniejsza niż różnica uzyskanych wyników, a przecież całkujemy funkcje o wartościach w przedziale $[-1,1]$.
 
-\section*{Metoda trapezów po podstawieniu $x=t^2$}
+\section*{Metoda trapezów po podstawieniu $x=t^2$ (C)}
 Po wykonaniu podstawień (5) i (6) otrzymujemy nowe funkcje podcałkowe $2\sin{x^2}$ i $2\cos{x^2}$ pozbawione osobliwości w punkcie 0. Można spodziewać się, że zastosowanie złożonego wzoru trapezów dla funkcji ciągłych na całym przedziale całkowania da lepsze wyniki, ponieważ skoro nasz przedział jest ograniczony, to funkcje które całkujemy są na nim jednostajnie ciągłe.
 
 \newpage
@@ -237,7 +247,18 @@ W punktach, w których wykres błędu bezwzględnego znika obliczona wartość j
 Powyżej widać wykres błędu względnego dla kwadratur rozbijających przedział $[-1,1]$ na trzy podprzedziały. Rozbijanie wyjściowego przedziału na większą ilość podprzedziałów nie wpływa na wyniki w sposób znaczący. Poprawia się jedynie dokładność otrzymanego wyniku dla kwadratur niższych stopni. W przypadku całki $I_C$ otrzymujemy 16 cyfr dokładnych i wynik ten nie poprawia się, nawet gdy używamy ponad 100 podprzedziałów zamiast wyjściowego $[-1,1]$. Dla 10 i więcej użytych podprzedziałów wyniki otrzymany przy obliczaniu całki $I_C$ jest dokładną wartością $I_C$ w arytmetyce Float64.  
 
 \section*{Podsumowanie wyników}
-\dots
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{Wykresporownaniemetod.png}
+    \label{wykresABC}
+    \caption{porównanie wyżej opisanych metod korzystających z metody trapezów}
+\end{figure}
+Po przeprowadzeniu eksperymentów zauważamy, że gdy kożystaliśmy z metody trapezów otrzymywaliśmy od jednej do trzech dokładnych cyfr po przecinku (Rysunek 2). Najlepsze wyniki otrzymaliśmy dla $I_C$ metodą C, metoda B działała dobrze tylko dla zmieniającego się h - dla stałego h nie dostaliśmy żadnej cyfry znaczącej. Dla całki $I_S$ przybliżenia otrzymane metodami A i B były tak samo dokładne i lepsze niż przybliżenia otrzymane metodą C.
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{WykresporownaniemetodABC-D.png}
+    \label{wykresABC-D}
+    \caption{porównanie najlepszych wyników dla metody A-C z wynikami kwadratur Gaussa-Legendre'a dla stopni 5 i 8}
+\end{figure}\\
+Kwadratura Gaussa-Legendre'a daje dużo lepsze wyniki, przy wykonaniu mniejszej ilości obliczeń - możemy osiągnąć nawet 15-16 dokładne liczby po przecinku. Złożonych kwadratury Gaussa-Legendre'a dla niskich stopni dają lepsze wyniki niż zwyzczajna kwadratura Gaussa-Legendre'a, ale dla wysokich stopni różnica jest niewielka.
 \begin{thebibliography}{9}
 
   
