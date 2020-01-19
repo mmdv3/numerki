@@ -96,9 +96,60 @@ Otrzymujemy w ten sposób nowe funkcje pod całką $Snew(x) = 2sin(x^2)$ i $Cnew
     \includegraphics[scale=0.5]{WykresSnew.png}
     \label{WykresSnew}
 \end{figure}
-\dots
 \section*{Metoda trapezów}
-\dots
+Metoda trapezów jest kwadraturą wyrażoną wzorem: 
+\begin{equation}
+\int_a^b f(x) dx \approx \frac{1}{2}(b-a) (f(a)+f(b))
+\end{equation}
+Rozumowanie użyte w tej metodzie jest następujące: skoro nie potrafimy łatwo obliczyć całki funkcji $f(x)$ to zastąpmy ją podobną funkcją, którą potrafimy zcałkować - wielomianem. Stosujemy więc interpolację (np. korzystając z wzoru Lagrange'a) i liczymy całkę z obliczonego wielomianu interpolacyjnego. 
+\begin{equation}
+w(x) = \sum_{i=0}^n f(x_i)l_i(x)
+\end{equation}
+gdzie 
+\begin{equation}
+ l_i(x) = \prod ^n_{j=0, j\neq i} \frac{x-x_j}{x_i-x_j} 
+\end{equation}
+\begin{equation}
+\int_a^b f(x) dx \approx \int_a^b w(x) dx =  \sum_{i=0}^n f(x_i)\int_a^bl_i(x)
+\end{equation}
+Jeśli węzłami interpolacji będą punkty postaci $x_i = a+ \frac{b-a}{n} $ to powyższy wzór nazywamy wzorem Newtona-Cotesa. Dla $n=1$ czyli interpolując $f$ w 2 punktach: $x_0=a$ i $x_1=b$ otrzymujemy wyżej wspomniany wzór trapezów.\\
+Zauważmy, że ta kwadratura jest dokładna dla $f$, które są wielomianami co najwyżej pierwszego stopnia. Można udowodnić, że błąd metody trapezów wynosi:
+\begin{equation}
+R = -\frac{1}{12}(b-a)^3f''(\xi)
+\end{equation}
+gdzie $\xi \in (a, b)$.
+Błąd jest więc zależny od długości przedziału całkowania. Aby uzyskać dokładniejszy wynik możemy podzielić przedział $(a, b)$ na mniejsze przedziały, na przykład na $n$ przedziałów długości $h=\frac{(b-a)}{n}$, i zastosować na każdym z nich wzór trapezów. W ten sposób otrzymujemy złożony wzór trapezów
+\begin{equation}
+\int_a^b f(x) dx \approx \frac{1}{2} h (f(a) + 2\sum_{i=1} ^{n-1} f(a+ih) +f(b))
+\end{equation}
+Którego błąd wynosi:
+\begin{equation}
+R = -\frac{1}{12n^2}(b-a)^3f''(\xi)
+\end{equation}
+gdzie $\xi \in (a, b)$.
+Metodę nazywamy metodą trapezów, ponieważ geometrycznie możemy myśleć o tym że przybliżamy pole pod wykresem (całkę) trapezami o wierzchołkach w punktach $ (a, 0), (a, f(a)), (b, 0), (b, f(b)) $.
+\subsection*{Wyniki obliczania całek za pomocą złożonego wzoru trapezów}
+\begin{tabular}{|c|c|c|} \hline
+liczba przedziałów & $I_C$ & $I_S$ \\ \hline \hline
+100 & 1.6677256034277628 & 0.6288262828757042 \\ \hline
+200 & 1.7082394599682968 & 0.6246912988653139 \\ \hline
+300 & 1.726399997150005  & 0.6233107905275299 \\ \hline
+400 & 1.7372928699596446 & 0.6226195323389588 \\ \hline
+500 & 1.7447564299910763 & 0.6222043082298286 \\ \hline
+600 & 1.750281758632448  & 0.6219272438774593 \\ \hline
+700 & 1.7545855714753669 & 0.6217291960934527 \\ \hline
+800 & 1.7580609258924103 & 0.6215805696160139 \\ \hline
+900 & 1.7609438155984576 & 0.6214649112045778 \\ \hline
+1000& 1.7633856545771385 & 0.6213723429157811 \\ \hline
+\end{tabular}\\
+\\
+Wyniki otrzymane za pomocą metody trapezów są coraz lepsze wraz ze wzrostem $n$. Zauważamy jednak, że polepszenie wyniku kosztem zwiększenia $n$ (co wiąże się ze zwiększeniem ilości obliczeń - czyli dłuższym obliczaniem wyniku i większymi błędami wynikającymi z zaokrągleń liczb) jest niewielkie. Jak widzimy na rysunku \ref{wykresA} logarytmy błędu maleją dość wolno. Logarytmy dziesiętne błędu oznaczają ile miejsc po przecinku wyniku jest dokładnych. Widzimy więc że w przypadku $I_C$ mamy ok. 1 cyfrę dokładną, a w przypadku $I_S$ mamy około 2 doładne liczby po przecinku. Zauważamy również, że metoda trapezów gorzej radzi sobie z funkcją $C$ niż z $S$.
+\begin{figure}[ht]
+    \includegraphics[scale=0.5]{WykresAlogabsolute.png}
+    \label{wykresA}
+    \caption{logarytm z błędu bezwzględnego obliczenia całek $I_C$ i $I_S$ wzorem złożonym trapezów dla różnych n}
+\end{figure}
+
 \section*{Kwadratury Gaussa-Legendre'a}
 	Wagą nazywam funkcję ciągłą, która nie jest tożsamościowo równa 0.
 \subsection*{Kwadratura} 
